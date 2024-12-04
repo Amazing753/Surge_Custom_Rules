@@ -1,0 +1,4 @@
+.emby.wtf
+.jtvnw.net
+.twitch.tv
+.ttvnw.net
