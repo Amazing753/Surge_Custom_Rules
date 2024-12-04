@@ -1,0 +1,44 @@
+name: Update Release
+
+on:
+  workflow_dispatch:  # 手动触发工作流
+
+jobs:
+  update-release:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 设置 GH_TOKEN 环境变量
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Git
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+
+    - name: Update release with latest files
+      run: |
+        tag_name="latest"  # 手动指定 "latest" 标签
+        
+        # 检查是否已经有该 release
+        existing_release=$(gh release view "$tag_name" --json tagName --jq .tagName || echo "not-found")
+        
+        if [[ "$existing_release" != "not-found" ]]; then
+          echo "Updating existing release '$tag_name'..."
+          
+          # 上传新的文件到现有的 release
+          gh release upload "$tag_name" Rules/* --clobber
+        else
+          echo "No existing release found, creating a new one..."
+          # 创建新的 release
+          gh release create "$tag_name" \
+            Rules/* \
+            --title "Release $tag_name" \
+            --notes "Release for $tag_name"
+        fi
+
+    - name: Clean up after release
+      run: |
+        echo "Release updated successfully!"
