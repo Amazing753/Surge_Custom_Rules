@@ -19,5 +19,3 @@ PROCESS-NAME,uTorrent
 PROCESS-NAME,WebTorrent
 PROCESS-NAME,/Applications/Plex Media Server.app/Contents/MacOS/Plex Media Server
 PROCESS-NAME,/Applications/eMuleTorrent.app/Contents/MacOS/eMuleTorrent
-IP-CIDR,104.16.0.0/13,Proxy // Cloudflare CDN Node for ChatGPT
-//IP-CIDR,172.64.0.0/13,Proxy // Cloudflare CDN Node for ChatGPT [Backup]
