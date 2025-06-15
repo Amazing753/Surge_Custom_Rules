@@ -1,2 +1,2 @@
-IP-CIDR,104.16.0.0/13,Proxy // Cloudflare CDN Node for ChatGPT
-//IP-CIDR,172.64.0.0/13,Proxy // Cloudflare CDN Node for ChatGPT [Backup]
+IP-CIDR,104.16.0.0/13 // Cloudflare CDN Node for ChatGPT
+//IP-CIDR,172.64.0.0/13 // Cloudflare CDN Node for ChatGPT [Backup]
